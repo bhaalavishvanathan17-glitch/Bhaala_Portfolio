@@ -1,21 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
-    }
+  "rewrites": [
+    { "source": "/contact", "destination": "/api/index" },
+    { "source": "/health", "destination": "/api/index" },
+    { "source": "/test-email", "destination": "/api/index" },
+    { "source": "/email-log", "destination": "/api/index" }
   ]
 }
