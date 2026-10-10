@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────
+#  Render.com — Deployment Configuration
+#  Project: Bhaala Vishvanathan Portfolio
+#  Service: Node.js / Express web server (v5)
+# ─────────────────────────────────────────────────────────
+
+services:
+  - type: web
+    name: bhaala-portfolio
+    runtime: node
+    rootDir: .
+    buildCommand: npm install
+    startCommand: node server.js
+    autoDeploy: true          # auto-redeploy on every GitHub push
+
+    healthCheckPath: /health   # Render pings this — server must return 2xx
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000           # Render assigns this automatically
+      - key: GMAIL_USER
+        sync: false            # set manually in Render dashboard
+      - key: GMAIL_APP_PASS
+        sync: false            # set manually in Render dashboard
+      - key: ADMIN_PASSWORD
+        sync: false            # set manually in Render dashboard
